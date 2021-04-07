@@ -60,7 +60,7 @@ resource "aws_codepipeline" "terraform_cicd" {
       version          = "1"
       output_artifacts = ["source_output"]
       configuration = {
-        S3bucket             = aws_s3_bucket.artifacts.id
+        S3Bucket             = aws_s3_bucket.artifacts.id
         S3ObjectKey          = "source.zip"
         PollForSourceChanges = true # deprecated
       }
