@@ -37,7 +37,9 @@ resource "aws_iam_policy" "codepipeline" {
       ],
       "Resource": [
         "${aws_s3_bucket.artifacts.arn}",
-        "${aws_s3_bucket.artifacts.arn}/*"
+        "${aws_s3_bucket.artifacts.arn}/*",
+        "${aws_s3_bucket.source.arn}",
+        "${aws_s3_bucket.source.arn}/*"
       ]
     },
     {
