@@ -2,6 +2,10 @@
 resource "aws_s3_bucket" "artifacts" {
   bucket = "terraform-cicd-codepipeline-artifacts-123456"
   acl    = "private"
+
+  versioning {
+    enabled = true
+  }
 }
 
 resource "aws_s3_bucket_public_access_block" "artifacts" {
@@ -16,6 +20,10 @@ resource "aws_s3_bucket_public_access_block" "artifacts" {
 resource "aws_s3_bucket" "source" {
   bucket = "terraform-cicd-codepipeline-source-123456"
   acl    = "private"
+
+  versioning {
+    enabled = true
+  }
 }
 
 resource "aws_s3_bucket_public_access_block" "source" {
