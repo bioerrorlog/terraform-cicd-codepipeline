@@ -85,6 +85,17 @@ resource "aws_codepipeline" "terraform_cicd" {
   }
 
   stage {
+    name = "Approval"
+    action {
+      name            = "Approval"
+      category        = "Approval"
+      provider        = "Manual"
+      version         = "1"
+      owner           = "AWS"
+    }
+  }
+
+  stage {
     name = "Deploy"
     action {
       name            = "Deploy"
