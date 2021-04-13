@@ -10,12 +10,13 @@ resource "aws_codebuild_project" "plan" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "hashicorp/terraform:0.14.9"
+    image        = "aws/codebuild/standard:5.0"
     type         = "LINUX_CONTAINER"
+    image_pull_credentials_type = "CODEBUILD"
   }
   source {
     type      = "CODEPIPELINE"
-    buildspec = file("buildspec/plan.yml")
+    buildspec = "buildspec/plan.yml"
   }
 }
 
@@ -30,12 +31,13 @@ resource "aws_codebuild_project" "apply" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "hashicorp/terraform:0.14.9"
+    image        = "aws/codebuild/standard:5.0"
     type         = "LINUX_CONTAINER"
+    image_pull_credentials_type = "CODEBUILD"
   }
   source {
     type      = "CODEPIPELINE"
-    buildspec = file("buildspec/apply.yml")
+    buildspec = "buildspec/apply.yml"
   }
 }
 
